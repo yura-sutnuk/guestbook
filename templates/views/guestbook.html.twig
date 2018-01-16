@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div align="center">
+        <table cellspacing="5px" cellpadding="5px" border="0px">
+            <tr >
+                <td class="top td sortable" OnClick="getNewSortedList('Date','ASC')"> Date </td>
+                <td class="top td sortable" OnClick="getNewSortedList('Name','ASC')"> User Name </td>
+                <td class="top td sortable" OnClick="getNewSortedList('Email','ASC')"> E-mail </td>
+                <td class="top td"> Homepage </td>
+                <td class="top td" > Ip </td>
+                <td class="top td"> Browser </td>
+                <td class="top td" > Message </td>
+            </tr>
+            {% for post in posts %}
+                <tr>
+                    <td class="td"> {{ post.date}}</td>
+                    <td class="td"> {{ post.name}} </td>
+                    <td class="td"> {{ post.email}}</td>
+                    <td class="td"> {{ post.url}}</td>
+                    <td class="td"> {{ post.ip}}</td>
+                    <td class="td"> {{ post.user_agent }}</td>
+                    <td class="td" >{{ post.text}}</td>
+                </tr>
+
+            {% endfor %}
+        </table>
+        {{ pages|raw }}
+    </div>
+
+    <a href="{{ asset('callback') }}"> Оставить отзыв </a>
+
+{% endblock  %}

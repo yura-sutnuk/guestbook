@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {% form_theme form 'form.html.twig' %}
+    {{ form_start(form) }}
+    <table>
+        {{ form_row(form.name) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.url) }}
+        {{ form_row(form.text) }}
+        <tr>
+            <td>
+                {{ form_widget(form.captcha) }}
+            </td>
+            <td>
+                <img src="{{ asset('captcha') }}">
+            </td>
+            <td>
+                {{ error }}
+            </td>
+        </tr>
+        {{ form_row(form.submit) }}
+    </table>
+    {{ form_end(form) }}
+
+{% endblock  %}

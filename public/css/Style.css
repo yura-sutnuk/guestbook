@@ -1,0 +1,33 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+#content{
+    border: 1px solid grey;
+    padding:20px;
+    margin:auto;
+}
+
+.td {
+    padding-left:10px;
+    padding-right:10px;
+    border-right:1px solid black;
+}
+
+.top{
+    border-bottom: 1px solid black;
+}
+.sortable
+{
+    cursor:pointer;
+    color:blue;
+}
+
+a{
+    text-decoration: none;
+}
+
+#activePage{
+    text-decoration: underline;
+}
