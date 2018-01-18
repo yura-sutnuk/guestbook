@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Flex\Response;
 
 class captcha
 {
@@ -59,6 +60,7 @@ class captcha
         }
         imagepng($img);
         imagedestroy($img);
+
     }
 }
 

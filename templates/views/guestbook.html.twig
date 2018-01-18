@@ -1,16 +1,18 @@
 {% extends 'base.html.twig' %}
-
+{% block htmlTag %}onClick = 'hide()'{% endblock %}
 {% block content %}
+    <div id="fileView" align="center" valign="middle" style="opacity: 0.1; filter: alpha(opacity=10);" ></div>
     <div align="center">
-        <table cellspacing="5px" cellpadding="5px" border="0px">
+        <table cellspacing="5px" cellpadding="5px" border="0px" id="table">
             <tr >
-                <td class="top td sortable" OnClick="getNewSortedList('Date','ASC')"> Date </td>
-                <td class="top td sortable" OnClick="getNewSortedList('Name','ASC')"> User Name </td>
-                <td class="top td sortable" OnClick="getNewSortedList('Email','ASC')"> E-mail </td>
+                <td class="top td clickable" OnClick="getNewSortedList('Date','ASC')"> Date </td>
+                <td class="top td clickable" OnClick="getNewSortedList('Name','ASC')"> User Name </td>
+                <td class="top td clickable" OnClick="getNewSortedList('Email','ASC')"> E-mail </td>
                 <td class="top td"> Homepage </td>
                 <td class="top td" > Ip </td>
                 <td class="top td"> Browser </td>
-                <td class="top td" > Message </td>
+                <td class="top td" width="300px"> Message </td>
+                <td class="top td"> Attachment</td>
             </tr>
             {% for post in posts %}
                 <tr>
@@ -20,7 +22,8 @@
                     <td class="td"> {{ post.url}}</td>
                     <td class="td"> {{ post.ip}}</td>
                     <td class="td"> {{ post.user_agent }}</td>
-                    <td class="td" >{{ post.text}}</td>
+                    <td class="td" width="300px" >{{ post.text|raw}}</td>
+                    <td class="td clickable"> <span onclick="showFile('{{ asset("files/"~post.attachment )}}')"> {{ post.attachment }}</span> </td>
                 </tr>
 
             {% endfor %}
@@ -28,6 +31,38 @@
         {{ pages|raw }}
     </div>
 
-    <a href="{{ asset('callback') }}"> Оставить отзыв </a>
+
 
 {% endblock  %}
+
+{% block callbackForm %}
+    <div align="center" style="margin:20px;margin-bottom: 100px">
+        {% form_theme form 'form.html.twig' %}
+        {{ form_start(form) }}
+        <table>
+            {{ form_row(form.name) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.url) }}
+            {{ form_row(form.text) }}
+            {{ form_row(form.attachment) }}
+            <tr>
+                <td>
+                    {{ form_widget(form.captcha) }}
+                </td>
+                <td>
+                    <img src="{{ asset('captcha') }}" id="captcha">
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="3">
+                    {{ form_widget(form.save) }}
+                    {{ form_widget(form.preview) }}
+                </td>
+            </tr>
+        </table>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

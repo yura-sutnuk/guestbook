@@ -56,6 +56,27 @@ class GuestBookTable
      */
     private $userAgent;
     /**
+     * @ORM\Column(type="string")
+     */
+    private $attachment;
+
+    /**
+     * @return mixed
+     */
+    public function getAttachment()
+    {
+        return $this->attachment;
+    }
+
+    /**
+     * @param mixed $attachment
+     */
+    public function setAttachment($attachment)
+    {
+        $this->attachment = $attachment;
+    }
+
+    /**
      * @return mixed
      */
     public function getName()

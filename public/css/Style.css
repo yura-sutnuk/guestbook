@@ -13,12 +13,10 @@
     padding-left:10px;
     padding-right:10px;
     border-right:1px solid black;
-}
-
-.top{
     border-bottom: 1px solid black;
 }
-.sortable
+
+.clickable
 {
     cursor:pointer;
     color:blue;
@@ -30,4 +28,25 @@ a{
 
 #activePage{
     text-decoration: underline;
+}
+
+#fileView{
+    width: 350px;
+    height: 250px;
+    padding:20px;
+    position: absolute;
+    top:25%;
+    left:37%;
+    display:none;
+    background-color: #8e8e8e;
+    overflow-x: auto;
+
+
+}
+#fileView img{
+    vertical-align:middle;
+}
+#preview
+{
+    color:red;
 }
